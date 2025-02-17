@@ -7,13 +7,18 @@
       <th>Brands</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-medicineFormGroup>
+  <ng-template pTemplate="body" let-medicineFormGroup let-rowIndex="rowIndex">
     <tr [formGroup]="medicineFormGroup">
       <td><input formControlName="name" /></td>
       <td><input formControlName="dosage" /></td>
       <td><input formControlName="frequency" /></td>
       <td>
-        <p-table [value]="getBrandsArray(medicineFormGroup).controls" [style]="{'margin-top':'10px'}">
+        <i class="pi pi-chevron-right" [ngClass]="{'pi-chevron-right': !expandedRows[rowIndex], 'pi-chevron-down': expandedRows[rowIndex]}" (click)="toggleRow(rowIndex)"></i>
+      </td>
+    </tr>
+    <tr *ngIf="expandedRows[rowIndex]">
+      <td colspan="4">
+        <p-table [value]="getBrandsArray(medicineFormGroup).controls" [style]="{'margin-top':'10px', 'margin-left':'40px'}">
           <ng-template pTemplate="header">
             <tr>
               <th>Name</th>

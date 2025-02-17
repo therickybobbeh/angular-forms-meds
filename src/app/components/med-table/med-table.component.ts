@@ -1,17 +1,26 @@
-import {Component, Input} from '@angular/core';
-import {FormGroup, FormBuilder, ReactiveFormsModule, FormControl} from '@angular/forms';
-import {MedicineFormGroup} from '../../models/medicine';
+import { Component, Input, OnInit } from '@angular/core';
+import {FormArray, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { MedicineFormGroup } from '../../models/medicine';
+import {TableModule} from 'primeng/table';
 
 @Component({
   selector: 'app-med-table',
+  templateUrl: './med-table.component.html',
   imports: [
+    TableModule,
     ReactiveFormsModule
   ],
-  templateUrl: './med-table.component.html',
-  styleUrl: './med-table.component.css'
+  styleUrls: ['./med-table.component.css']
 })
-export class MedTableComponent {
-  @Input() form!: MedicineFormGroup;
+export class MedTableComponent implements OnInit {
+  @Input() formArray!: FormArray;
+
+  getBrandsArray(medicineFormGroup: FormGroup): FormArray {
+    return medicineFormGroup.get('brands') as FormArray;
+  }
+
+  ngOnInit(): void {}
+}
 
 
 
@@ -26,4 +35,4 @@ export class MedTableComponent {
   // get frequencyControl(): FormControl {
   //   return this.form.get('frequency') as FormControl;
   // }
-}
+

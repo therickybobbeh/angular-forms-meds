@@ -1,15 +1,35 @@
-<p>med-table works!</p>
-<table>
-  <tr>
-    <td>Name:</td>
-    <td><input [formControl]="form.controls.name" /></td>
-  </tr>
-  <tr>
-    <td>Dosage:</td>
-    <td><input [formControl]="form.controls.dosage" /></td>
-  </tr>
-  <tr>
-    <td>Frequency:</td>
-    <td><input [formControl]="form.controls.frequency" /></td>
-  </tr>
-</table>
+<p-table [value]="formArray.controls" [paginator]="true" [rows]="10" sortMode="multiple">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+      <th pSortableColumn="dosage">Dosage <p-sortIcon field="dosage"></p-sortIcon></th>
+      <th pSortableColumn="frequency">Frequency <p-sortIcon field="frequency"></p-sortIcon></th>
+      <th>Brands</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-medicineFormGroup>
+    <tr [formGroup]="medicineFormGroup">
+      <td><input formControlName="name" /></td>
+      <td><input formControlName="dosage" /></td>
+      <td><input formControlName="frequency" /></td>
+      <td>
+        <p-table [value]="getBrandsArray(medicineFormGroup).controls" [style]="{'margin-top':'10px'}">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>ID</th>
+              <th>Code</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-brandFormGroup>
+            <tr [formGroup]="brandFormGroup">
+              <td><input formControlName="name" /></td>
+              <td><input formControlName="id" /></td>
+              <td><input formControlName="code" /></td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

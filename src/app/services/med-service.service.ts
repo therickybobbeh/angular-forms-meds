@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { Medicine } from '../models/medicine';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class MedServiceService {
     }
 
     return this.fb.group({
-      name: medicine?.name || '',
+      name: [medicine?.name || '', Validators.required],
       dosage: medicine?.dosage || '',
       frequency: medicine?.frequency || '',
       brands: brandsFormArray
@@ -26,7 +26,7 @@ export class MedServiceService {
 
   createBrandForm(brand?: { name: string; id: string; code: string }): FormGroup {
     return this.fb.group({
-      name: brand?.name || '',
+      name: [brand?.name || '', Validators.required],
       id: brand?.id || '',
       code: brand?.code || ''
     });

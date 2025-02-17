@@ -3,12 +3,14 @@ import { FormBuilder, FormArray, FormGroup, ReactiveFormsModule } from '@angular
 import { Medicine, MedicineFormGroup } from '../../models/medicine';
 import { MedTableComponent } from '../med-table/med-table.component';
 import { MedServiceService } from '../../services/med-service.service';
+import {TableModule} from 'primeng/table';
 
 @Component({
   selector: 'app-med-table-form',
   imports: [
     MedTableComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ],
   templateUrl: './med-table-form.component.html',
   styleUrls: ['./med-table-form.component.css']

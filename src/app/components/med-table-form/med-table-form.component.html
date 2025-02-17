@@ -1,0 +1,5 @@
+<p>med-table-form works!</p>
+<form [formGroup]="medicineForm" (ngSubmit)="onSubmit()">
+  <app-med-table [form]="medicineForm"></app-med-table>
+  <button type="submit">Submit</button>
+</form>

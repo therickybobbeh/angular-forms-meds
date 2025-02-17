@@ -13,17 +13,17 @@ export interface Brands {
   code: string;
 }
 
-export interface MedicineForm {
-  name: FormControl<string>;
-  dosage: FormControl<string>;
-  frequency: FormControl<string>;
-  brands: FormArray<FormGroup<BrandForm>>;
-}
-
-export interface BrandForm {
-  name: FormControl<string>;
-  id: FormControl<string>;
-  code: FormControl<string>;
-}
-
-export type MedicineFormGroup = FormGroup<MedicineForm>;
+// export interface MedicineForm {
+//   name: FormControl<string>;
+//   dosage: FormControl<string>;
+//   frequency: FormControl<string>;
+//   brands: FormArray<FormGroup<BrandForm>>;
+// }
+//
+// export interface BrandForm {
+//   name: FormControl<string>;
+//   id: FormControl<string>;
+//   code: FormControl<string>;
+// }
+//
+// export type MedicineFormGroup = FormGroup<MedicineForm>;

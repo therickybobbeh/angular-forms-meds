@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Medicine, MedicineFormGroup } from '../../models/medicine';
+import { Medicine } from '../../models/medicine';
 import { MedTableComponent } from '../med-table/med-table.component';
 import { MedServiceService } from '../../services/med-service.service';
 import {TableModule} from 'primeng/table';
@@ -62,7 +62,8 @@ export class MedTableFormComponent implements OnInit {
 
     // push each medicine into the form array
     medicineData.forEach(medicine => {
-      const medicineFormGroup: MedicineFormGroup = this.medicineFormService.createMedicineForm(medicine);
+      // const medicineFormGroup: MedicineFormGroup = this.medicineFormService.createMedicineForm(medicine);
+      const medicineFormGroup = this.medicineFormService.createMedicineForm(medicine);
       this.formArray.push(medicineFormGroup);
     });
   }

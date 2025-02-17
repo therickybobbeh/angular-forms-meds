@@ -1,5 +1,5 @@
 <p>med-table-form works!</p>
 <form [formGroup]="medicineForm" (ngSubmit)="onSubmit()">
-  <app-med-table [formArray]="formArray"></app-med-table>
-  <button type="submit">Submit</button>
+  <app-med-table [formArray]="formArray" (undo)="undoChanges($event)"></app-med-table>
+  <button type="submit" class="btn-primary">Submit</button>
 </form>

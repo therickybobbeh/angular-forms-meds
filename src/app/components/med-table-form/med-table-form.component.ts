@@ -15,6 +15,7 @@ import { MedServiceService } from '../../services/med-service.service';
 })
 export class MedTableFormComponent implements OnInit {
   medicineForm!: FormGroup;
+  originalState: Medicine[] = [];
 
   constructor(private fb: FormBuilder, private medicineFormService: MedServiceService) {}
 
@@ -29,6 +30,7 @@ export class MedTableFormComponent implements OnInit {
     return this.medicineForm.get('medicines') as FormArray;
   }
 
+  //simulate loading data from an API
   loadMedicineData(): void {
     const medicineData: Medicine[] = [
       {
@@ -53,10 +55,22 @@ export class MedTableFormComponent implements OnInit {
       }
     ];
 
+    // store original state for undo functionality
+    this.originalState = JSON.parse(JSON.stringify(medicineData));
+
+    // push each medicine into the form array
     medicineData.forEach(medicine => {
       const medicineFormGroup: MedicineFormGroup = this.medicineFormService.createMedicineForm(medicine);
       this.formArray.push(medicineFormGroup);
     });
+  }
+
+  // will take the original stat, find the reffed index and set it back to the original
+  // this approach will only work with 1 undo at a time
+  undoChanges(index: number): void {
+    const originalMedicine = this.originalState[index];
+    const medicineFormGroup = this.medicineFormService.createMedicineForm(originalMedicine);
+    this.formArray.setControl(index, medicineFormGroup);
   }
 
   onSubmit(): void {
@@ -65,5 +79,6 @@ export class MedTableFormComponent implements OnInit {
     } else {
       console.log('Form is invalid');
     }
+    //may need to update the original state here
   }
 }

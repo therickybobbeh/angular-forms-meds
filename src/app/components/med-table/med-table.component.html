@@ -38,8 +38,8 @@
         <i class="pi pi-chevron-right" [ngClass]="{'pi-chevron-right': !expandedRows[rowIndex], 'pi-chevron-down': expandedRows[rowIndex]}" (click)="toggleRow(rowIndex)"></i>
       </td>
       <td class="text-center">
-        <select formControlName="options" class="form-control">
-          <option *ngFor="let option of getOptionsArray(medicineFormGroup)" [value]="option">{{ option }}</option>
+        <select formControlName="selectedOption" class="form-control">
+          <option *ngFor="let option of medicineFormGroup.get('options').value" [value]="option">{{ option }}</option>
         </select>
         <div class="form-check form-switch mt-2">
           <input class="form-check-input" type="checkbox" formControlName="actions" />

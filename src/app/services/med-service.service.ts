@@ -18,7 +18,8 @@ export class MedServiceService {
       name: [medicine?.name || '', Validators.required],
       dosage: [medicine?.dosage || '', Validators.required],
       frequency: [medicine?.frequency || '', Validators.required],
-      options: [medicine?.options || []],
+      options: [medicine?.options || []], // Ensure this is an array
+      selectedOption: [medicine?.options ? medicine.options[0] : ''], // New form control for selected option
       actions: [medicine?.actions || false],
       brands: brandsFormArray
     });

@@ -4,6 +4,8 @@ export interface Medicine {
   name: string;
   dosage: string;
   frequency: string;
+  options: string[];
+  actions: boolean;
   brands: Brands[];
 }
 

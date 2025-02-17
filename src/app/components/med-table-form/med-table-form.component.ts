@@ -39,6 +39,8 @@ export class MedTableFormComponent implements OnInit {
         name: 'Aspirin',
         dosage: '500mg',
         frequency: 'Twice a day',
+        options: ['Option 1', 'Option 2'],
+        actions: false,
         brands: [
           { name: 'Brand A', id: '1', code: 'A1' },
           { name: 'Brand B', id: '2', code: 'B1' },
@@ -49,6 +51,8 @@ export class MedTableFormComponent implements OnInit {
         name: 'Ibuprofen',
         dosage: '200mg',
         frequency: 'Three times a day',
+        options: ['Option 1', 'Option 2'],
+        actions: true,
         brands: [
           { name: 'Brand X', id: '4', code: 'X1' },
           { name: 'Brand Y', id: '5', code: 'Y1' },

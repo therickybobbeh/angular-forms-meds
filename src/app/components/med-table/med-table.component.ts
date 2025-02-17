@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
-import {NgClass, NgIf, NgStyle} from '@angular/common';
+import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-med-table',
@@ -11,7 +11,7 @@ import {NgClass, NgIf, NgStyle} from '@angular/common';
     TableModule,
     NgClass,
     NgIf,
-    NgStyle
+    NgForOf,
   ],
   styleUrls: ['./med-table.component.css']
 })
@@ -26,6 +26,10 @@ export class MedTableComponent implements OnInit {
   // you need to get nested form groups like this when passed via input
   getBrandsArray(medicineFormGroup: FormGroup): FormArray {
     return medicineFormGroup.get('brands') as FormArray;
+  }
+
+  getOptionsArray(medicineFormGroup: FormGroup): string[] {
+    return (medicineFormGroup.get('options') as FormArray).value as string[];
   }
 
   toggleRow(rowIndex: number): void {

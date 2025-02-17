@@ -54,8 +54,7 @@ export class MedTableFormComponent implements OnInit {
     ];
 
     medicineData.forEach(medicine => {
-      const medicineFormGroup: MedicineFormGroup = this.medicineFormService.createMedicineForm();
-      medicineFormGroup.patchValue(medicine);
+      const medicineFormGroup: MedicineFormGroup = this.medicineFormService.createMedicineForm(medicine);
       this.formArray.push(medicineFormGroup);
     });
   }

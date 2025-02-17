@@ -20,7 +20,9 @@ export class MedTableComponent implements OnInit {
   expandedRows: { [key: number]: boolean } = {};
 
   getBrandsArray(medicineFormGroup: FormGroup): FormArray {
-    return medicineFormGroup.get('brands') as FormArray;
+    const brandsArray = medicineFormGroup.get('brands') as FormArray;
+    console.log('Brands Array:', brandsArray.value);
+    return brandsArray;
   }
 
   toggleRow(rowIndex: number): void {

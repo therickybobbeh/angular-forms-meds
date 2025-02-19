@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
+import {Ripple} from 'primeng/ripple';
 
 @Component({
   selector: 'app-med-table',
@@ -12,6 +13,7 @@ import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
     NgClass,
     NgIf,
     NgForOf,
+    Ripple,
   ],
   styleUrls: ['./med-table.component.css']
 })
@@ -37,4 +39,8 @@ export class MedTableComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  protected readonly FormGroup = FormGroup;
 }
+
+

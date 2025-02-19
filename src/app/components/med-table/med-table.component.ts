@@ -38,6 +38,7 @@ export class MedTableComponent implements OnInit {
     this.expandedRows[rowIndex] = !this.expandedRows[rowIndex];
   }
 
+
   ngOnInit(): void {}
 
   protected readonly FormGroup = FormGroup;

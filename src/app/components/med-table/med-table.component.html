@@ -50,7 +50,7 @@
            pRipple
            pRowToggler="medicineFormGroup"
            [ngClass]="{'pi-chevron-right': !expandedRows[rowIndex], 'pi-chevron-down': expandedRows[rowIndex]}"
-        >
+           (click)="toggleRow(rowIndex)">
         </i>
       </td>
       <td class="text-center">
@@ -67,7 +67,7 @@
       </td>
     </tr>
   </ng-template>
-  <ng-template #expandedrow pTemplate="rowexpansion" let-rowData let-rowIndex="rowIndex">
+  <ng-template #expandedrow let-rowData>
     <tr>
       <td colspan="6">
         <p-table [value]="getBrandsArray(rowData).controls"

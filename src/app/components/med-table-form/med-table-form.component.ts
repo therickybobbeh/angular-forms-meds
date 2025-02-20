@@ -67,32 +67,51 @@ export class MedTableFormComponent implements OnInit {
         actions: false,
         brands: [
           { name: 'Brand D', id: '7', code: 'D1' },
-          { name: 'Brand E', id: '8', code: 'E1' },
-          { name: 'Brand F', id: '9', code: 'F1' }
+          { name: 'Brand E', id: '8', code: 'E1' }
         ]
       },
       {
-        name: 'Naproxen',
+        name: 'Amoxicillin',
         dosage: '250mg',
         frequency: 'Twice a day',
         options: ['Option 1', 'Option 2'],
         actions: true,
         brands: [
-          { name: 'Brand G', id: '10', code: 'G1' },
+          { name: 'Brand F', id: '9', code: 'F1' },
+          { name: 'Brand G', id: '10', code: 'G1' }
+        ]
+      },
+      {
+        name: 'Metformin',
+        dosage: '500mg',
+        frequency: 'Once a day',
+        options: ['Option 1', 'Option 2'],
+        actions: false,
+        brands: [
           { name: 'Brand H', id: '11', code: 'H1' },
           { name: 'Brand I', id: '12', code: 'I1' }
         ]
       },
       {
-        name: 'Diclofenac',
-        dosage: '50mg',
-        frequency: 'Three times a day',
+        name: 'Lisinopril',
+        dosage: '10mg',
+        frequency: 'Once a day',
+        options: ['Option 1', 'Option 2'],
+        actions: true,
+        brands: [
+          { name: 'Brand J', id: '13', code: 'J1' },
+          { name: 'Brand K', id: '14', code: 'K1' }
+        ]
+      },
+      {
+        name: 'Atorvastatin',
+        dosage: '20mg',
+        frequency: 'Once a day',
         options: ['Option 1', 'Option 2'],
         actions: false,
         brands: [
-          { name: 'Brand J', id: '13', code: 'J1' },
-          { name: 'Brand K', id: '14', code: 'K1' },
-          { name: 'Brand L', id: '15', code: 'L1' }
+          { name: 'Brand L', id: '15', code: 'L1' },
+          { name: 'Brand M', id: '16', code: 'M1' }
         ]
       }
     ];

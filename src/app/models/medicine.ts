@@ -1,12 +1,12 @@
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
 
 export interface Medicine {
-  name: string;
-  dosage: string;
-  frequency: string;
-  options: string[];
-  actions: boolean;
-  brands: Brands[];
+  name: string | null;
+  dosage: string | null;
+  frequency: string| null;
+  options: string[] | null;
+  actions: boolean | null;
+  brands: Brands[] | null;
 }
 
 export interface Brands {

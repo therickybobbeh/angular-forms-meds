@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormArray, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {TableModule} from 'primeng/table';
-import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
-import {Ripple} from 'primeng/ripple';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TableModule } from 'primeng/table';
+import { NgClass, NgForOf, NgIf, NgStyle } from '@angular/common';
+import { Ripple } from 'primeng/ripple';
+import { MedServiceService } from '../../services/med-service.service';
 
 @Component({
   selector: 'app-med-table',
@@ -18,14 +19,14 @@ import {Ripple} from 'primeng/ripple';
   styleUrls: ['./med-table.component.css']
 })
 export class MedTableComponent implements OnInit {
-  @Input() formArray!: FormArray;
-  @Output() undo = new EventEmitter<number>();
-
-  // so this passes the key and a boolean. it is read by the tables rowIndex and looks on the
-  // index of the array to see if it is true or false
   expandedRows: { [key: number]: boolean } = {};
 
-  // you need to get nested form groups like this when passed via input
+  constructor(public medicineFormService: MedServiceService) {}
+
+  get formArray(): FormArray {
+    return this.medicineFormService.formArray;
+  }
+
   getBrandsArray(medicineFormGroup: FormGroup): FormArray {
     return medicineFormGroup.get('brands') as FormArray;
   }
@@ -38,10 +39,9 @@ export class MedTableComponent implements OnInit {
     this.expandedRows[rowIndex] = !this.expandedRows[rowIndex];
   }
 
+  undoChanges(index: number): void {
+    this.medicineFormService.undoChanges(index);
+  }
 
   ngOnInit(): void {}
-
-  protected readonly FormGroup = FormGroup;
 }
-
-

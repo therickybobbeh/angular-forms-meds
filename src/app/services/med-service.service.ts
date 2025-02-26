@@ -134,4 +134,10 @@ export class MedServiceService {
       code: [brand?.code || '', Validators.required]
     });
   }
+
+  undoChanges(index: number): void {
+    const originalMedicine = this.originalState[index];
+    const medicineFormGroup = this.createMedicineForm(originalMedicine);
+    this.formArray.setControl(index, medicineFormGroup);
+  }
 }

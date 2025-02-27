@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TableModule } from 'primeng/table';
+import {Table, TableModule} from 'primeng/table';
 import { NgClass, NgForOf, NgIf, NgStyle } from '@angular/common';
 import { Ripple } from 'primeng/ripple';
 import { MedServiceService } from '../../services/med-service.service';
+import {InputText} from 'primeng/inputtext';
 
 @Component({
   selector: 'app-med-table',
@@ -14,11 +15,14 @@ import { MedServiceService } from '../../services/med-service.service';
     NgClass,
     NgIf,
     NgForOf,
-    Ripple,
+    InputText,
   ],
   styleUrls: ['./med-table.component.css']
 })
 export class MedTableComponent implements OnInit {
+
+  @ViewChild('main_table') main_table!: Table;
+
   expandedRows: { [key: number]: boolean } = {};
 
   constructor(public medicineFormService: MedServiceService) {}
@@ -41,6 +45,12 @@ export class MedTableComponent implements OnInit {
 
   undoChanges(index: number): void {
     this.medicineFormService.undoChanges(index);
+  }
+
+
+  filterGrid(value: string, field: string){
+
+    this.main_table.filter(value, `value.${field}`, 'contains');
   }
 
   ngOnInit(): void {}

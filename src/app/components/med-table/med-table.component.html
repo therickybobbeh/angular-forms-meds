@@ -1,4 +1,5 @@
 <p-table
+  #main_table
   [value]="formArray.controls"
   [paginator]="true"
   [rows]="10"
@@ -12,6 +13,12 @@
       <th class="text-center">Brands</th>
       <th class="text-center">Options</th>
       <th class="text-center">Actions</th>
+    </tr>
+    <tr>
+      <th>
+        <input pInputText type="text" (input)="filterGrid($any($event.target).value, 'name')" placeholder="Search by Name" />
+      </th>
+      <th colspan="5"></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-medicineFormGroup let-rowIndex="rowIndex">
